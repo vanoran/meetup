@@ -1,0 +1,18 @@
+<ion-view title="My Calendar" class="mycalendar">
+  <ion-content class="has-header padding">
+    <h1>My Calendar</h1>
+	<ion-slide-box show-pager="false">
+		<ion-slide ng-repeat="day in userDays" class="day">
+			<ion-list>
+				<ion-item class="day-title">
+					{{day.title}}
+				</ion-item>
+				<ion-item ng-repeat="state in stateNames"  
+					ng-class="{0: 'busy', 1: 'free'}[day.states[$index]]"
+					ng-click="updateDay(day, $index)">
+					{{state}}
+				</ion-item>
+			</ion-list>
+		</ion-slide>
+  </ion-content>
+</ion-view>
