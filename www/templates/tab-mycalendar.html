@@ -4,12 +4,12 @@
 	<ion-slide-box show-pager="false">
 		<ion-slide ng-repeat="day in userDays" class="day">
 			<ion-list>
-				<ion-item class="day-title">
+				<ion-item class="day-title" translate>
 					{{day.title}}
 				</ion-item>
 				<ion-item ng-repeat="state in stateNames"  
 					ng-class="{0: 'busy', 1: 'free'}[day.states[$index]]"
-					ng-click="updateDay(day, $index)">
+					ng-click="updateDay(day, $index)" translate>
 					{{state}}
 				</ion-item>
 			</ion-list>

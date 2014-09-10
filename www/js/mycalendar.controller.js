@@ -8,29 +8,30 @@ angular.module('mycalendar.controller', [])
 	 ...
 	 morning, noon, afternoon, night
 	*/
+
 	var days = [{
-		title: 'Domingo',
+		title: 'SUNDAY',
 		states: [0,0,0,1]
 	},{
-		title: 'Lunes',
+		title: 'MONDAY',
 		states: [0,0,0,1]
 	},{
-		title: 'Martes',
+		title: 'TUESDAY',
 		states: [0,0,0,1]
 	},{
-		title: 'Miercoles',
+		title: 'WEDNESDAY',
 		states: [0,0,0,1]
 	},{
-		title: 'Jueves',
+		title: 'THURSDAY',
 		states: [0,0,0,1]
 	},{
-		title: 'Viernes',
+		title: 'FRIDAY',
 		states: [0,0,0,1]
 	},{
-		title: 'Sabado',
+		title: 'SATURDAY',
 		states: [0,0,0,1]
 	}];
-	var stateNames = ['Mañana', 'Mediodía', 'Tarde', 'Noche'];
+	var stateNames = ['MORNING', 'NOON', 'AFTERNOON', 'NIGHT'];
 
 	$scope.userDays = days;
 	$scope.stateNames = stateNames;
