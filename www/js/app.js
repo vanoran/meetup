@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'translations', 'starter.controllers', 'starter.services', 'mycalendar.controller'])
+angular.module('starter', ['ionic', 'translations', 'starter.controllers', 'starter.services', 'mycalendar.controller', 'now.controller'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -67,12 +67,12 @@ angular.module('starter', ['ionic', 'translations', 'starter.controllers', 'star
       }
     })
 
-    .state('tab.account', {
-      url: '/account',
+    .state('tab.now', {
+      url: '/now',
       views: {
-        'tab-account': {
-          templateUrl: 'templates/tab-account.html',
-          controller: 'AccountCtrl'
+        'tab-now': {
+          templateUrl: 'templates/tab-now.html',
+          controller: 'NowCtrl'
         }
       }
     })

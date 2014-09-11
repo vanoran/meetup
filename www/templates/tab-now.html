@@ -1,0 +1,27 @@
+<ion-view title="Events going down now!">
+  <ion-content class="padding">
+  	<div class="item-card-list">
+  	  
+
+  	<div class="item-list-container">
+	<a href="#" class="item item-icon-right lighter">
+	  <i class="icon ion-help"></i>
+	  Touch to create
+	</a>
+	</div>
+
+	<div class="item-list-container" ng-repeat="meetupEvt in events">
+	<a class="item item-icon-right" ng-click="setActive($index)">
+	  <i class="icon {{meetupEvt.eventIcon}}"></i>
+	  {{meetupEvt.eventOwner + "'s event"}}
+	</a>
+	<div class="item div-body-class item-icon-right" ng-show="$index == currentActive">
+	  <button class="button">MeetUp</button>
+	 	<p>People already accepted: {{meetupEvt.peopleAccepted}}</p>
+   		<p>Time remaining: {{meetupEvt.remainingTime}} </p>
+	</div>
+	</div>
+
+	</div>
+  </ion-content>
+</ion-view>
