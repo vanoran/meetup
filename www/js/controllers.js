@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope) {
+.controller('DashCtrl', function($scope,$state) {
 
 	navigator.geolocation.getCurrentPosition(function(position){
 		alert('Latitude: '          + position.coords.latitude          + '\n' +
@@ -12,6 +12,22 @@ angular.module('starter.controllers', [])
           'Speed: '             + position.coords.speed             + '\n' +
           'Timestamp: '         + position.timestamp                + '\n');
 	});
+
+  $( ".draggable" ).draggable({ scrollSpeed: 600 });
+  $( ".droppable" ).droppable({
+    drop: function() {
+      $state.go('tab.now');
+    }
+  });
+  $( ".droppable-settings" ).droppable({
+    drop: function() {
+      $state.go('tab.settings');
+    }
+  });
+})
+
+.controller('SettingsCtrl', function($scope){
+  $scope.test = 'test';
 })
 
 .controller('FriendsCtrl', function($scope, Friends) {
