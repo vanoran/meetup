@@ -1,1 +1,40 @@
 /* Empty. Add your own CSS if you like */
+
+.item p{
+	color: #fff;
+}
+
+.item.item-icon-right{
+	color: #fff;
+}
+
+.item-icon-right{
+	border-color: #000;
+	background-color: #444444;
+}
+
+.pane{
+	background-color: #333333;
+}
+
+.tabs{
+	border-color: #000;
+	background-color: #444444;
+	color: #fff;
+}
+
+.lighter{
+	background-color: #555555;
+}
+
+.item.div-body-class{
+	border-color: #000;
+	background-color: #777777;
+}
+
+.item-card-list .button{
+	color: #fff;
+	border-color: #000;
+	background-color: #777777;
+	float: right;
+}
