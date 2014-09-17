@@ -5,13 +5,15 @@
 -->
 <link href="css/style.css" rel="stylesheet">
 <ion-side-menus>
-
   <ion-pane ion-side-menu-content>
     <ion-nav-bar class="bar-stable nav-title-slide-ios7">
       <ion-nav-back-button class="button-clear"><i class="icon ion-ios7-arrow-back"></i> Back</ion-nav-back-button>
     </ion-nav-bar>
     <ion-tabs class="tabs-icon-top">
-
+      <!-- Home Tab -->
+      <ion-tab title="Home" href="#/tab/home">
+        <ion-nav-view name="tab-home"></ion-nav-view>
+      </ion-tab>
 
       <!-- Dashboard Tab -->
       <ion-tab title="Dashboard" href="#/tab/dash">

@@ -27,6 +27,10 @@ angular.module('starter.controllers', [])
   });
 })
 
+.controller('HomeCtrl', function($scope){
+  $scope.test = 'test';
+})
+
 .controller('SettingsCtrl', function($scope){
   $scope.test = 'test';
 })
