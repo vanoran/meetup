@@ -1,0 +1,28 @@
+.left-menu{
+	.list{
+		i{
+			width: 25px;
+			display: inline-block;
+			text-align: center
+		}
+	}
+	ul.user-account-data {
+		list-style: none;
+		margin: 12px 0 0 25px;
+		li{
+			padding: 10px;
+			text-align: left;
+			border-top: 1px solid black;
+		}
+	}
+}
+
+.popup-body{
+	h2 {
+		text-align: center;
+	}
+	input {
+		margin-bottom: 10px;
+		padding: 5px;
+	}
+}

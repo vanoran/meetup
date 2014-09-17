@@ -3,7 +3,7 @@ angular.module('starter.controllers', [])
 .controller('DashCtrl', function($scope,$state) {
 
 	navigator.geolocation.getCurrentPosition(function(position){
-		alert('Latitude: '          + position.coords.latitude          + '\n' +
+		/*alert('Latitude: '          + position.coords.latitude          + '\n' +
           'Longitude: '         + position.coords.longitude         + '\n' +
           'Altitude: '          + position.coords.altitude          + '\n' +
           'Accuracy: '          + position.coords.accuracy          + '\n' +
@@ -11,6 +11,7 @@ angular.module('starter.controllers', [])
           'Heading: '           + position.coords.heading           + '\n' +
           'Speed: '             + position.coords.speed             + '\n' +
           'Timestamp: '         + position.timestamp                + '\n');
+      */
 	});
 
   $( ".draggable" ).draggable({ scrollSpeed: 600 });

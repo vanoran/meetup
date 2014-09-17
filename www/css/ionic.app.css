@@ -7681,14 +7681,12 @@ a.button {
   background-color: #444444; }
 
 .pane {
-  background-color: #fff; }
+  background-color: #333333; }
 
 .tabs {
   border-color: #000;
   background-color: #444444;
-  color: #fff;
-  display: none; }
-   
+  color: #fff; }
 
 .lighter {
   background-color: #555555; }
@@ -7703,54 +7701,20 @@ a.button {
   background-color: #777777;
   float: right; }
 
-/* ~*~ ~*~ ~~ ~*~ ~*~ */
-/*     DASHBOARD      */
-/* ~*~ ~*~ ~~ ~*~ ~*~ */
-* {
-	box-sizing: border-box;
-}
-.dashboard {
-	width: 100%;
-	height: 100%;
-}
-.dashboard .drag-icon {
-	position: absolute;
-	top: 50%;
-	right: 50%;
-}
-.dashboard .drag-icon i.draggable {
-    font-size: 70px;
-    color:teal;   
-}
-.dashboard .drop-icon {
-	position: absolute;
-	margin: 10px;
-}
-.dashboard .drop-icon i {
-	font-size: 50px;
-    color:teal;
-}
-.dashboard .top-left {
-	left: 0;
-	padding-right: 40px;
-	padding-bottom: 40px;
-}
-.dashboard .top-right {
-	right: 0;
-	padding-left: 40px;
-	padding-bottom: 40px;
-}
-.dashboard .bottom-left {
-	bottom: 0;
-	left: 0;
-	padding-right: 40px;
-	padding-top: 40px;
-}
-.dashboard .bottom-right {
-	bottom: 0;
-	right: 0;
-	padding-left: 40px;
-	padding-top: 40px; 
-}
+.left-menu .list i {
+  width: 25px;
+  display: inline-block;
+  text-align: center; }
+.left-menu ul.user-account-data {
+  list-style: none;
+  margin: 12px 0 0 25px; }
+  .left-menu ul.user-account-data li {
+    padding: 10px;
+    text-align: left;
+    border-top: 1px solid black; }
 
-
+.popup-body h2 {
+  text-align: center; }
+.popup-body input {
+  margin-bottom: 10px;
+  padding: 5px; }
