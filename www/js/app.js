@@ -26,6 +26,25 @@ angular.module('starter', ['ionic',
     }
   });
 })
+/*
+.directive('resize', function($window) {
+  return {
+    link: function(scope) {
+      angular.element($window).on('resize', function(e) {
+        // Namespacing events with name of directive + event to avoid collisions
+        //I should capture this event in the actual directive
+        $scope.$broadcast('resize::resize');
+        var menu = angular.element('ion-side-menu')[0],
+          content = angular.element('ion-pane')[0],
+          width = $window.innerWidth,
+          height = $window.innerHeight;
+        menu.setAttribute('style', 'width:' + width + 'px;');
+        //menu.setAttribute('style', 'width:' + width + 'px;');
+        //-webkit-transform: translate3d(640px, 0px, 0px);
+      });
+    }
+  }
+})*/
 
 .config(function($stateProvider, $urlRouterProvider) {
 
@@ -36,85 +55,83 @@ angular.module('starter', ['ionic',
   $stateProvider
 
     // setup an abstract state for the tabs directive
-    .state('tab', {
-      url: "/tab",
+    .state('app', {
+      url: "/app",
       abstract: true,
       templateUrl: "templates/tabs.html",
       controller: "LoginApiCtrl"
     })
 
-    // Each tab has its own nav history stack:
-
-    .state('tab.home', {
+    .state('app.home', {
       url: '/home',
       views: {
-        'tab-home': {
+        'menuContent': {
           templateUrl: 'templates/tab-home.html',
           controller: 'HomeCtrl'
         }
       }
     })
 
-    .state('tab.dash', {
+    .state('app.dash', {
       url: '/dash',
       views: {
-        'tab-dash': {
+        'menuContent': {
           templateUrl: 'templates/tab-dash.html',
           controller: 'DashCtrl'
         }
       }
     })
 
-    .state('tab.settings', {
+    .state('app.settings', {
       url: '/settings',
       views: {
-        'tab-settings': {
+        'menuContent': {
           templateUrl: 'templates/tab-settings.html',
           controller: 'SettingsCtrl'
         }
       }
     })
 
-    .state('tab.friends', {
+    .state('app.friends', {
       url: '/friends',
       views: {
-        'tab-friends': {
+        'menuContent': {
           templateUrl: 'templates/tab-friends.html',
           controller: 'FriendsCtrl'
         }
       }
     })
-    .state('tab.friend-detail', {
+    .state('app.friend-detail', {
       url: '/friend/:friendId',
       views: {
-        'tab-friends': {
+        'menuContent': {
           templateUrl: 'templates/friend-detail.html',
           controller: 'FriendDetailCtrl'
         }
       }
     })
 
-    .state('tab.now', {
+    .state('app.now', {
       url: '/now',
       views: {
-        'tab-now': {
+        'menuContent': {
           templateUrl: 'templates/tab-now.html',
           controller: 'NowCtrl'
         }
       }
     })
 
-    .state('tab.createevent', {
+    .state('app.createevent', {
       url: '/createevent',
       views: {
-        'tab-createevent': {
+        'menuContent': {
           templateUrl: 'templates/tab-createevent.html',
           controller: 'NowCtrl'
         }
       }
     })
 
-    .state('tab.calendar', {
+    .state('app.calendar', {
       url: '/mycalendar',
       views: {
         'tab-mycalendar': {
@@ -125,7 +142,7 @@ angular.module('starter', ['ionic',
     });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/home');
+  $urlRouterProvider.otherwise('/app/friends');
 
 });
 
