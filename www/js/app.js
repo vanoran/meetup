@@ -136,6 +136,16 @@ angular.module('starter', ['ionic',
       }
     })
 
+    .state('app.calendarevents', {
+      url: '/calendarevents',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/tab-calendarevents.html',
+          controller: 'NowCtrl'
+        }
+      }
+    })
+
     .state('app.createevent', {
       url: '/createevent',
       views: {
