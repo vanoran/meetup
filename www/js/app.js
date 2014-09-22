@@ -26,6 +26,21 @@ angular.module('starter', ['ionic',
     }
   });
 })
+.directive('noDragRight', ['$ionicGesture', function($ionicGesture) {
+
+  return {
+    restrict: 'A',
+    link: function($scope, $element, $attr) {
+
+      $ionicGesture.on('dragright', function(e) {
+        e.gesture.srcEvent.preventDefault();
+      }, $element);
+      $ionicGesture.on('dragleft', function(e) {
+        e.gesture.srcEvent.preventDefault();
+      }, $element);
+    }
+  }
+}])
 /*
 .directive('resize', function($window) {
   return {

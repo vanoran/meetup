@@ -25,7 +25,7 @@
 }
 
 .pane{
-	background-color: #333333;
+	background-color: $dark;
 }
 
 .tabs{
@@ -48,4 +48,10 @@
 	border-color: #000;
 	background-color: #777777;
 	float: right;
+}
+
+.bar {
+	h1 {
+		font-family: Pacifico;
+	}
 }
