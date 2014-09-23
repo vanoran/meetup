@@ -7655,9 +7655,13 @@ a.button {
 
 .mycalendar .day .free {
   background: #66cc33;
+  -webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s linear;
   transition: all 0.3s linear; }
 .mycalendar .day .busy {
   background: #ef4e3a;
+  -webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s linear;
   transition: all 0.3s linear;
   color: white; }
 
@@ -7737,38 +7741,59 @@ a.button {
   top: 50%;
   right: 40%; }
 
-.dashboard .drag-icon i.draggable {
+.dashboard .drag-icon {
   font-size: 70px;
-  color: teal; }
+  color: teal;
+  z-index: 99; }
 
 .dashboard .drop-icon {
   position: absolute;
-  margin: 10px; }
-
-.dashboard .drop-icon i {
-  font-size: 50px;
-  color: teal; }
-
+  width: 200px;
+  height: 200px;
+  opacity: 0;
+  -webkit-transition: all 0.5s linear;
+  -moz-transition: all 0.5s linear;
+  transition: all 0.5s linear; }
+  .dashboard .drop-icon.prepared {
+    opacity: 1;
+    -webkit-transition: all 0.5s linear;
+    -moz-transition: all 0.5s linear;
+    transition: all 0.5s linear; }
+  .dashboard .drop-icon.active {
+    background-color: white; }
 .dashboard .top-left {
-  margin-top: 50px;
-  left: 0;
-  padding-right: 40px;
-  padding-bottom: 40px; }
-
+  left: -100px;
+  top: -100px;
+  background-color: #ff0000; }
+  .dashboard .top-left.prepared {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    transform: rotate(-45deg); }
 .dashboard .top-right {
-  margin-top: 50px;
-  right: 0;
-  padding-left: 40px;
-  padding-bottom: 40px; }
-
+  right: -100px;
+  top: -100px;
+  background-color: #00ff00; }
+  .dashboard .top-right.prepared {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    transform: rotate(45deg); }
 .dashboard .bottom-left {
-  bottom: 0;
-  left: 0;
-  padding-right: 40px;
-  padding-top: 40px; }
-
+  bottom: -100px;
+  left: -100px;
+  background-color: #0000ff; }
+  .dashboard .bottom-left.prepared {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    transform: rotate(-45deg); }
 .dashboard .bottom-right {
-  bottom: 0;
-  right: 0;
-  padding-left: 40px;
-  padding-top: 40px; }
+  bottom: -100px;
+  right: -100px;
+  background-color: #ff00ff; }
+  .dashboard .bottom-right.prepared {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    transform: rotate(45deg); }
+
+.canvas {
+  position: absolute;
+  z-index: 99; }

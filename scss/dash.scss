@@ -14,39 +14,63 @@
 	top: 50%;
 	right: 40%; 
 }
-.dashboard .drag-icon i.draggable {
+.dashboard .drag-icon  {
     font-size: 70px;
-    color:teal;   
+	color: teal;
+	z-index: 99;
 }
-.dashboard .drop-icon {
-	position: absolute; 
-	margin: 10px;
+$triangle-size:			200px;
+
+.dashboard {
+	.drop-icon {
+		position: absolute; 
+		width: $triangle-size;
+		height: $triangle-size;
+		opacity: 0;
+		@include transition(all 0.5s linear);
+		&.prepared {
+			opacity: 1;
+			@include transition(all  0.5s linear);
+		}
+		&.active {
+			background-color: white;
+		}
+	}
+	.top-left {	
+		left: -$triangle-size / 2;
+		top: -$triangle-size / 2;
+		background-color: $top-left-t;
+		&.prepared {
+			@include rotate(-45deg);
+		}
+	}
+	.top-right {
+		right: -$triangle-size / 2;
+		top: -$triangle-size / 2;
+		background-color: $top-right-t;
+		&.prepared {
+			@include rotate(45deg);
+		}
+	}
+	.bottom-left {
+		bottom: -$triangle-size / 2;
+		left: -$triangle-size / 2;
+		background-color: $bottom-left-t;
+		&.prepared {
+			@include rotate(-45deg);
+		}
+	}
+	.bottom-right {
+		bottom: -$triangle-size / 2;
+		right: -$triangle-size / 2;
+		background-color: $bottom-right-t;
+		&.prepared {
+			@include rotate(45deg);
+		}
+	}
 }
-.dashboard .drop-icon i {
-	font-size: 50px;
-    color:teal;
-}
-.dashboard .top-left {
-	margin-top: 50px;
-	left: 0;
-	padding-right: 40px;
-	padding-bottom: 40px;
-}
-.dashboard .top-right {
-	margin-top: 50px;
-	right: 0;
-	padding-left: 40px;
-	padding-bottom: 40px;
-}
-.dashboard .bottom-left {
-	bottom: 0;
-	left: 0;
-	padding-right: 40px;
-	padding-top: 40px;
-}
-.dashboard .bottom-right {
-	bottom: 0;
-	right: 0;
-	padding-left: 40px;
-	padding-top: 40px; 
+
+.canvas {
+	position: absolute;
+	z-index: 99;
 }

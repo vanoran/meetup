@@ -159,7 +159,7 @@ angular.module('starter', ['ionic',
     .state('app.calendar', {
       url: '/mycalendar',
       views: {
-        'tab-mycalendar': {
+        'menuContent': {
           templateUrl: 'templates/tab-mycalendar.html',
           controller: 'MyCalendarCtrl'
         }
@@ -167,7 +167,7 @@ angular.module('starter', ['ionic',
     });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/friends');
+  $urlRouterProvider.otherwise('/app/dash');
 
 });
 

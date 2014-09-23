@@ -2,11 +2,11 @@
 	.day {
 		.free {
 			background: $balanced;
-			transition: all 0.3s linear;
+			@include transition(all 0.3s linear);
 		}
 		.busy {
 			background: $assertive;
-			transition: all 0.3s linear;
+			@include transition(all 0.3s linear);
 			color: white;
 		}
 	}	

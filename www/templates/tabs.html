@@ -21,7 +21,7 @@
     </header>
     <ion-content class="has-header">
       <ion-list>
-        <ion-item nav-clear ng-click="onClickLogin($event)">
+        <ion-item nav-clear>
           <i class="icon ion-social-google"></i>Google Account
           <ul class="user-account-data" ng-show="user.google.length > 0">
             <li ng-repeat="data in user.google">
@@ -30,10 +30,17 @@
           </ul>
         </ion-item>
         <ion-item nav-clear ng-click="">
-          <i class="icon ion-social-facebook"></i>Facebook
+          
+          <label class="item item-input">
+            <span class="input-label"><i class="icon ion-social-facebook"></i> User: </span>
+            <input type="text" placeholder="facebook-account"/>
+          </label>
         </ion-item>
-        <ion-item nav-clear ng-click="">
-          <i class="icon ion-social-twitter"></i>Twitter
+        <ion-item nav-clear ng-click="">          
+          <label class="item item-input">
+            <span class="input-label"><i class="icon ion-social-twitter"></i> User: </span>
+            <input type="text" placeholder="@twitter-name"/>
+          </label>
         </ion-item>
       </ion-list>
     </ion-content>
