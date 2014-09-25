@@ -6,7 +6,7 @@
     <title></title>
     
     <!-- build:css /css .css-->
-    
+    <link href="lib/css3-social-signin-buttons/auth-buttons.css" rel="stylesheet">
     <link href="css/ionic.app.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
 
@@ -41,6 +41,70 @@
     </ion-nav-bar>
     <ion-nav-view></ion-nav-view>
 
-    
+
+    <!-- Coloca este JavaScript asíncrono justo delante de la etiqueta </body> -->
+    <script type="text/javascript">
+      (function() {
+        var po = document.createElement('script');
+        po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/client:plusone.js?onload=render';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(po, s);
+      })();
+
+      function render() {
+        gapi.signin.render('customBtn', {
+          'callback': 'signinCallback',
+          'clientid': '382334613666-ehs48e3e3qsaiqptmsiago49qpu1e173.apps.googleusercontent.com',
+          'cookiepolicy': 'single_host_origin',
+          'requestvisibleactions': 'http://schemas.google.com/AddActivity',
+          'scope': 'https://www.googleapis.com/auth/plus.login'
+        });
+      }
+
+      function signinCallback(authResult) {
+        if (authResult['access_token']) {
+            // Autorizado correctamente
+            // Oculta el botón de inicio de sesión ahora que el usuario está autorizado, por ejemplo:
+            console.log(authResult);
+            //$('#customBtn').css('display','none');
+        } else if (authResult['error']) {
+            // Se ha producido un error.
+            // Posibles códigos de error:
+            //   "access_denied": el usuario ha denegado el acceso a la aplicación.
+            //   "immediate_failed": no se ha podido dar acceso al usuario de forma automática.
+            console.log('There was an error: ' + authResult['error']);
+        }
+      }
+
+      //For LOG OUT
+
+        /*function disconnectUser(access_token) {
+          var revokeUrl = 'https://accounts.google.com/o/oauth2/revoke?token=' +
+              access_token;
+
+          // Realiza una solicitud GET asíncrona.
+          $.ajax({
+            type: 'GET',
+            url: revokeUrl,
+            async: false,
+            contentType: "application/json",
+            dataType: 'jsonp',
+            success: function(nullResponse) {
+              // Lleva a cabo una acción ahora que el usuario está desconectado
+              // La respuesta siempre está indefinida.
+              alert("Log out!");
+            },
+            error: function(e) {
+              // Gestiona el error
+              // console.log(e);
+              // Puedes indicar a los usuarios que se desconecten de forma manual si se produce un error
+              // https://plus.google.com/apps
+            }
+          });
+        }
+        // Se puede activar la desconexión haciendo clic en un botón
+        $('#revokeButton').click(disconnectUser);*/
+    </script>
   </body>
 </html>
