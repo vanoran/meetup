@@ -23,4 +23,14 @@ angular.module('starter.services', [])
       return friends[friendId];
     }
   }
-});
+})
+
+.factory('Background', ['$http', function($http) {
+    return {
+      get: function() {
+        return $http.get('api/background.json').then(function(response) {
+          return response.data;
+        })
+      }
+    };
+}]);

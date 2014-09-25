@@ -1,7 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope,$state) {
-  
+.controller('DashCtrl',['$scope', '$timeout', 'Background', function($scope, $timeout, Background) {
   navigator.geolocation.getCurrentPosition(function(position){
     /*alert('Latitude: '          + position.coords.latitude          + '\n' +
           'Longitude: '         + position.coords.longitude         + '\n' +
@@ -13,7 +12,24 @@ angular.module('starter.controllers', [])
           'Timestamp: '         + position.timestamp                + '\n');
       */
   });
-})
+
+  var today = new Date();
+  var day = Math.round(today.getDay());
+
+  setBackground = function(url) {
+    $( '.pane' ).css('background', 'url('+ url +') no-repeat fixed center  / 100% 100% transparent');
+  };
+
+  Background.get().then(function(data) {
+    var url = data[day].url;
+    $timeout(function() {
+          $scope.$apply(function() {
+            setBackground(url);
+          })
+    })
+  });
+
+}])
 
 .directive('myCanvasDnd',  function(){
   return {
