@@ -203,7 +203,8 @@ angular.module('starter.controllers', [])
 })
 
 .controller('HomeCtrl', function($scope){
-  $scope.test = 'test';
+
+  //https://www.googleapis.com/plus/v1/people/me?fields=image&key={YOUR_API_KEY}
 })
 
 .controller('SettingsCtrl', function($scope){

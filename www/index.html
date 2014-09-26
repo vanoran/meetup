@@ -58,15 +58,17 @@
           'clientid': '382334613666-ehs48e3e3qsaiqptmsiago49qpu1e173.apps.googleusercontent.com',
           'cookiepolicy': 'single_host_origin',
           'requestvisibleactions': 'http://schemas.google.com/AddActivity',
-          'scope': 'https://www.googleapis.com/auth/plus.login'
+          'scope': 'https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/fusiontables email'
         });
       }
 
       function signinCallback(authResult) {
         if (authResult['access_token']) {
             // Autorizado correctamente
-            // Oculta el botón de inicio de sesión ahora que el usuario está autorizado, por ejemplo:
-            console.log(authResult);
+            
+            var accessToken = authResult.access_token;
+            getProfileImage(accessToken);
+
             //$('#customBtn').css('display','none');
         } else if (authResult['error']) {
             // Se ha producido un error.
@@ -77,34 +79,20 @@
         }
       }
 
-      //For LOG OUT
+      function getProfileImage(access_token) {
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open("GET", 'https://www.googleapis.com/oauth2/v1/userinfo?access_token=' + access_token, false );
 
-        /*function disconnectUser(access_token) {
-          var revokeUrl = 'https://accounts.google.com/o/oauth2/revoke?token=' +
-              access_token;
+        xmlHttp.send( null );
 
-          // Realiza una solicitud GET asíncrona.
-          $.ajax({
-            type: 'GET',
-            url: revokeUrl,
-            async: false,
-            contentType: "application/json",
-            dataType: 'jsonp',
-            success: function(nullResponse) {
-              // Lleva a cabo una acción ahora que el usuario está desconectado
-              // La respuesta siempre está indefinida.
-              alert("Log out!");
-            },
-            error: function(e) {
-              // Gestiona el error
-              // console.log(e);
-              // Puedes indicar a los usuarios que se desconecten de forma manual si se produce un error
-              // https://plus.google.com/apps
-            }
-          });
+        if(xmlHttp.status == 200) {
+          var strJSON = xmlHttp.responseText;
+          var objJSON = eval("(function(){return " + strJSON + ";})()");
+          console.log("objJSON",objJSON);
+          var urlProfileImage = objJSON.picture;
         }
-        // Se puede activar la desconexión haciendo clic en un botón
-        $('#revokeButton').click(disconnectUser);*/
+      }
+      
     </script>
   </body>
 </html>
