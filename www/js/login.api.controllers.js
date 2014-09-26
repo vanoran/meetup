@@ -1,22 +1,14 @@
 angular.module('login.api.controllers', [])
 .factory('userService', function($rootScope){
 	var service = {
-		model: {
-			access_token: '',
-			refresh_token:'',
-			data: {
-				name: '',
-				email: '',
-				imageSrc: ''
-			}
-		},
 
-		saveState: function(){
-			sessionStorage.setItem('user', angular.fromJSON(service.model));
+		saveState: function(user){
+			localStorage.setItem('user', JSON.stringify(user));
 		},
 
 		getState: function(){
-			sessionStorage.getItem('user');
+			console.log(localStorage.getItem('user'));
+			return JSON.parse(localStorage.getItem('user'));
 		}
 	};
 
@@ -25,6 +17,6 @@ angular.module('login.api.controllers', [])
 
 .controller('LoginApiCtrl', function($scope, $ionicPopup, $http, userService){
 	$scope.widthMenu = window.innerWidth;
-	$scope.user = userService.getState();
+	//$scope.user = userService.getState();
 	
 });

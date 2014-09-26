@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl',['$scope', '$timeout', 'Background', function($scope, $timeout, Background) {
+.controller('DashCtrl',['$scope', '$timeout', 'Background','userService', function($scope, $timeout, Background, userService) {
   navigator.geolocation.getCurrentPosition(function(position){
     /*alert('Latitude: '          + position.coords.latitude          + '\n' +
           'Longitude: '         + position.coords.longitude         + '\n' +
@@ -29,9 +29,13 @@ angular.module('starter.controllers', [])
     })
   });
 
+  $scope.getUser = function () {
+    return userService.getState();
+  }
+
 }])
 
-.directive('myCanvasDnd',  function(){
+.directive('myCanvasDnd', ['userService', function(userService){
   return {
     restrict: 'E',
     transclude: true,
@@ -39,6 +43,7 @@ angular.module('starter.controllers', [])
     link: function(scope, elem, attrs){
       var $scope = scope;
       var element;
+      var user = userService.getState();
       var canvas = document.getElementById('canvas');
       /* variables to check drop */
       var radius = 35;
@@ -104,7 +109,7 @@ angular.module('starter.controllers', [])
 
         };
         
-        this.avatar.src = 'img/avatar.png';
+        this.avatar.src = user.picture;
         return this;
       }
 
@@ -200,12 +205,52 @@ angular.module('starter.controllers', [])
     }
 
   };
-})
+}])
 
-.controller('HomeCtrl', function($scope){
+.controller('HomeCtrl', ['$scope', 'userService', function($scope, userService){
 
-  //https://www.googleapis.com/plus/v1/people/me?fields=image&key={YOUR_API_KEY}
-})
+  window.render = function () {
+        gapi.signin.render('customBtn', {
+          'callback': 'signinCallback',
+          'clientid': '382334613666-ehs48e3e3qsaiqptmsiago49qpu1e173.apps.googleusercontent.com',
+          'cookiepolicy': 'single_host_origin',
+          'requestvisibleactions': 'http://schemas.google.com/AddActivity',
+          'scope': 'https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/fusiontables email'
+        });
+      }
+
+       window.signinCallback = function (authResult) {
+        if (authResult['access_token']) {
+            // Autorizado correctamente
+            
+            var accessToken = authResult.access_token;
+            getProfileImage(accessToken);
+
+            //$('#customBtn').css('display','none');
+        } else if (authResult['error']) {
+            // Se ha producido un error.
+            // Posibles códigos de error:
+            //   "access_denied": el usuario ha denegado el acceso a la aplicación.
+            //   "immediate_failed": no se ha podido dar acceso al usuario de forma automática.
+            console.log('There was an error: ' + authResult['error']);
+        }
+      }
+
+      window.getProfileImage = function (access_token) {
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open("GET", 'https://www.googleapis.com/oauth2/v1/userinfo?access_token=' + access_token, false );
+
+        xmlHttp.send( null );
+
+        if(xmlHttp.status == 200) {
+          var strJSON = xmlHttp.responseText;
+          var objJSON = eval("(function(){return " + strJSON + ";})()");
+          console.log(objJSON);
+          userService.saveState(objJSON);
+          var urlProfileImage = objJSON.picture;
+        }
+      }  
+}])
 
 .controller('SettingsCtrl', function($scope){
   $scope.test = 'test';
