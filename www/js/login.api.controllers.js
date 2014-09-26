@@ -1,19 +1,30 @@
 angular.module('login.api.controllers', [])
-.factory('User', function() {
-	return {
-		data:{
-			google: []
+.factory('userService', function($rootScope){
+	var service = {
+		model: {
+			access_token: '',
+			refresh_token:'',
+			data: {
+				name: '',
+				email: '',
+				imageSrc: ''
+			}
+		},
+
+		saveState: function(){
+			sessionStorage.setItem('user', angular.fromJSON(service.model));
+		},
+
+		getState: function(){
+			sessionStorage.getItem('user');
 		}
 	};
+
+	return service;
 })
 
-.controller('LoginApiCtrl', function($scope, $ionicPopup, $http, User){
+.controller('LoginApiCtrl', function($scope, $ionicPopup, $http, userService){
 	$scope.widthMenu = window.innerWidth;
-	$scope.user = User.data;
-	//hardcoded
-	$scope.user.google = [
-  		'Pepe',
-  		'Apellido',
-  		'pepe@gmail.com'
-  	];
+	$scope.user = userService.getState();
+	
 });
