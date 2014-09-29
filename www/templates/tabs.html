@@ -4,7 +4,7 @@
   navigation history that also transitions its views in and out.
 -->
 <link href="css/style.css" rel="stylesheet">
-<ion-side-menus>
+<ion-side-menus ng-controller="NowCtrl">
   <ion-pane ion-side-menu-content>
     <ion-nav-bar class="bar-stable nav-title-slide-ios7">
       <ion-nav-back-button class="button-clear"><i class="icon ion-ios7-arrow-back"></i> Back</ion-nav-back-button>
@@ -23,10 +23,12 @@
       <ion-list>
         <ion-item nav-clear>
           <i class="icon ion-social-google"></i>Google Account
-          <ul class="user-account-data" ng-show="user.google.length > 0">
-            <li ng-repeat="data in user.google">
-              {{data}}
-            </li>
+          <ul class="user-account-data">
+            <img src="{{user.picture}}" alt="image-profile" height="100px" width="100px">
+            <li style="border-top:none;">{{user.name}}</li>
+            <li>{{user.email}}</li>
+            <li></li>
+            <li></li>
           </ul>
         </ion-item>
         <ion-item nav-clear ng-click="">
@@ -41,6 +43,13 @@
             <span class="input-label"><i class="icon ion-social-twitter"></i> User: </span>
             <input type="text" placeholder="@twitter-name"/>
           </label>
+        </ion-item>
+        <ion-item nav-clear ng-click="">
+          <fb:login-button scope="public_profile,email,user_friends,user_location" onlogin="checkLoginState();">
+          </fb:login-button>
+
+          <div id="status">
+          </div>
         </ion-item>
       </ion-list>
     </ion-content>

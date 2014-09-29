@@ -7,7 +7,6 @@ angular.module('login.api.controllers', [])
 		},
 
 		getState: function(){
-			console.log(localStorage.getItem('user'));
 			return JSON.parse(localStorage.getItem('user'));
 		}
 	};

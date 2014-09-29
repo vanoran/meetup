@@ -207,7 +207,7 @@ angular.module('starter.controllers', [])
   };
 }])
 
-.controller('HomeCtrl', ['$scope', 'userService', function($scope, userService){
+.controller('HomeCtrl', ['$scope', '$state', 'userService', function($scope, $state, userService){
 
   window.render = function () {
         gapi.signin.render('customBtn', {
@@ -222,11 +222,10 @@ angular.module('starter.controllers', [])
        window.signinCallback = function (authResult) {
         if (authResult['access_token']) {
             // Autorizado correctamente
-            
+           
             var accessToken = authResult.access_token;
-            getProfileImage(accessToken);
-
-            //$('#customBtn').css('display','none');
+            getUserInfo(accessToken);
+            $state.go("app.dash");
         } else if (authResult['error']) {
             // Se ha producido un error.
             // Posibles códigos de error:
@@ -236,7 +235,7 @@ angular.module('starter.controllers', [])
         }
       }
 
-      window.getProfileImage = function (access_token) {
+      window.getUserInfo = function (access_token) {
         var xmlHttp = new XMLHttpRequest();
         xmlHttp.open("GET", 'https://www.googleapis.com/oauth2/v1/userinfo?access_token=' + access_token, false );
 
@@ -245,9 +244,9 @@ angular.module('starter.controllers', [])
         if(xmlHttp.status == 200) {
           var strJSON = xmlHttp.responseText;
           var objJSON = eval("(function(){return " + strJSON + ";})()");
-          console.log(objJSON);
+
+          //Save user on localStorage
           userService.saveState(objJSON);
-          var urlProfileImage = objJSON.picture;
         }
       }  
 }])

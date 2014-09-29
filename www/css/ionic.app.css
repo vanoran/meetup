@@ -7809,3 +7809,21 @@ a.button {
 .canvas {
   position: absolute;
   z-index: 99; }
+
+/* ~*~ ~*~ ~~ ~*~ ~*~ */
+/*     HOME           */
+/* ~*~ ~*~ ~~ ~*~ ~*~ */
+
+.home .content #customBtn {
+	text-align: center; }
+
+/* ~*~ ~*~ ~~ ~*~ ~*~ */
+/*     PROFILE        */
+/* ~*~ ~*~ ~~ ~*~ ~*~ */
+
+.user-account-data img {
+	float: left;
+	border-radius: 50px; }
+
+.user-account-data li {
+	margin-left: 117px; }
